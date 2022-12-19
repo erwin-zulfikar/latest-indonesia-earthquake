@@ -1,11 +1,22 @@
 import requests
 from bs4 import BeautifulSoup
 
+"""
+Class GempaTerkini. Class merupakan cetak biru dari sebuah objek GempaTerkini.
+GempaTerkini nantinya adalah sebuah objek.
+Objek GempaTerkini memiliki 3 identitas berupa description, result, url.
+Objek GempaTerkini memiliki “kemampuan” untuk ekstraksi_data(), tampilkan_data() dan run().
+Dieksekusi di dalam konstruktor __init__ dan __main__
+Dibuat objek gempa_di_indonesia dan gempa_di_dunia dari Class GempaTerkini.
+dan dijalankan sehingga tampil data gempa terkini.
+"""
+
 
 class GempaTerkini:
-    def __init__(self):
+    def __init__(self, url):
         self.description = 'To get the latest earthquake in Indonesia from BKMG.go.id'
         self.result = None
+        self.url = url
 
     def ekstraksi_data(self):
         """
@@ -21,7 +32,7 @@ class GempaTerkini:
         # mengambil data/konten halaman dari halaman situs bmkg.go.id
         # dan jika alamat salah/server mati maka munculkan pesan error
         try:
-            content = requests.get('https://www.bmkg.go.id/')
+            content = requests.get(self.url)
         except (Exception,):
             return None
 
@@ -108,8 +119,13 @@ class GempaTerkini:
 
 
 if __name__ == '__main__':
-    gempa_di_indonesia = GempaTerkini()
-    print("Deskripsi package", gempa_di_indonesia.description)
+    gempa_di_indonesia = GempaTerkini('https://www.bmkg.go.id/')
+    print("Deskripsi class GempaTerkini", gempa_di_indonesia.description)
     gempa_di_indonesia.run()
+
+    # gempa_di_dunia = GempaTerkini('https://climate.com//')
+    # print("Deskripsi class GempaTerkini", gempa_di_dunia.description)
+    # gempa_di_dunia.run()
+
     # gempa_di_indonesia.ekstraksi_data()
     # gempa_di_indonesia.tampilkan_data()
