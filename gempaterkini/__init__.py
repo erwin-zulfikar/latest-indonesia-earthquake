@@ -129,3 +129,4 @@ if __name__ == '__main__':
 
     # gempa_di_indonesia.ekstraksi_data()
     # gempa_di_indonesia.tampilkan_data()
+

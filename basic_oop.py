@@ -3,8 +3,8 @@ Konsep Dasar OOP adalah setiap komponen program seolah-olah adalah sebuah objek.
 Dan setiap objek selalu memiliki Identitas dan juga Perilaku / Kemampuan untuk melakukan tugas tertentu.
 Analogi Objek Segitiga
 1. Segitiga adalah sebuah objek.
-2. Objek segitiga memiliki 2 identitas (variabel) berupa alas dan tinggi.
-3. Objek segitiga memiliki “kemampuan” (fungsi) untuk menghitung luasnya sendiri.
+2. Objek segitiga memiliki 2 identitas (Variabel) berupa alas dan tinggi.
+3. Objek segitiga memiliki “kemampuan” (Fungsi) untuk menghitung luasnya sendiri.
 
 Sebelumnya, kita perlu tahu dulu bahwa sesuatu tidaklah dikatakan objek,
 kecuali jika memiliki atribut atau perilaku.
