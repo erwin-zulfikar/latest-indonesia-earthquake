@@ -9,14 +9,43 @@ Objek GempaTerkini memiliki “kemampuan” untuk ekstraksi_data(), tampilkan_da
 Dieksekusi di dalam konstruktor __init__ dan __main__
 Dibuat objek gempa_di_indonesia dan gempa_di_dunia dari Class GempaTerkini.
 dan dijalankan sehingga tampil data gempa terkini.
+
+Constructor = metode yang dipanggil pertama kali saat object diciptakan.
+Gunakan untuk mendeklarasikan semua variabel/field pada Class ini.
 """
 
 
-class GempaTerkini:
-    def __init__(self, url):
-        self.description = 'To get the latest earthquake in Indonesia from BKMG.go.id'
+class Bencana:
+    def __init__(self, url, description):
+        self.description = description
         self.result = None
         self.url = url
+
+    def tampilkan_keterangan(self):
+        print(self.description)
+
+    def ekstraksi_data(self):
+        print('ekstraksi_data not yet implemented')
+
+    def tampilkan_data(self):
+        print('tampilkan_data not yet implemented')
+
+    def run(self):
+        self.ekstraksi_data()
+        self.tampilkan_data()
+
+
+class BanjirTerkini(Bencana):
+    def __init__(self, url):
+        super(BanjirTerkini, self).__init__(url, 'NOT YET IMPLEMENTED, but it should return last flood in Indonesia')
+
+    def tampilkan_keterangan(self):
+        print(f'UNDER CONSTRUCTION {self.description}')
+
+
+class GempaTerkini(Bencana):
+    def __init__(self, url):
+        super(GempaTerkini, self).__init__(url, 'To get the latest EarthQuake in Indonesia from BMKG.go.id')
 
     def ekstraksi_data(self):
         """
@@ -113,15 +142,22 @@ class GempaTerkini:
         print(f"Lokasi {self.result['lokasi']}")
         print(f"Dirasakan {self.result['dirasakan']}")
 
-    def run(self):
-        self.ekstraksi_data()
-        self.tampilkan_data()
-
 
 if __name__ == '__main__':
     gempa_di_indonesia = GempaTerkini('https://www.bmkg.go.id/')
-    print("Deskripsi class GempaTerkini", gempa_di_indonesia.description)
+    gempa_di_indonesia.tampilkan_keterangan()
     gempa_di_indonesia.run()
+
+    print('\n')
+    banjir_di_indonesia = BanjirTerkini('NOT YET')
+    banjir_di_indonesia.tampilkan_keterangan()
+    banjir_di_indonesia.run()
+
+    # Polymorphism
+    daftar_bencana = [gempa_di_indonesia, banjir_di_indonesia]
+    print('\nSemua bencana yang ada')
+    for bencana in daftar_bencana:
+        bencana.tampilkan_keterangan()
 
     # gempa_di_dunia = GempaTerkini('https://climate.com//')
     # print("Deskripsi class GempaTerkini", gempa_di_dunia.description)
@@ -129,4 +165,3 @@ if __name__ == '__main__':
 
     # gempa_di_indonesia.ekstraksi_data()
     # gempa_di_indonesia.tampilkan_data()
-
