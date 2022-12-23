@@ -10,7 +10,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="latest-earthquake-indonesia-erwin",
-    version="0.5",
+    version="0.6",
     author="Erwin Zulfikar",
     author_email="erwin_zulfikar@yahoo.com",
     description="This package will get the latest earthquake from BMKG Meteorology, Climatology, "
